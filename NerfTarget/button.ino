@@ -1,8 +1,10 @@
-#define ButtonCount 2
-#define Button0 2
-#define Button1 3
-int buttons[ButtonCount] = {Button0, Button1};
-int buttonsLast[ButtonCount] = {HIGH,HIGH}; 
+#define ButtonCount 4
+#define Button1 2
+#define Button3 3
+#define Button5 4
+#define Button10 5
+int buttons[ButtonCount] = {Button10, Button5, Button3, Button1};
+int buttonsLast[ButtonCount] ;
 
 void ButtonSetup()
 {
