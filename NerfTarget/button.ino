@@ -3,8 +3,9 @@
 #define Button3 3
 #define Button5 4
 #define Button10 5
-int buttons[ButtonCount] = {Button10, Button5, Button3, Button1};
+int buttons[ButtonCount] = {Button1, Button3, Button5, Button10};
 int buttonsLast[ButtonCount] ;
+bool buttonsPress[4];
 
 void ButtonSetup()
 {
@@ -26,5 +27,21 @@ void ButtonLoop()
       buttonsPress[i] = true;
     }
     buttonsLast[i] = buti;
+  }
+}
+
+bool BottonWasPresst(int i)
+{
+  return buttonsPress[i] ;
+}
+void BottonClear(int i)
+{
+  buttonsPress[i] = false;
+}
+void BottonClearAll()
+{
+  for (int i = 0; i < ButtonCount;i++)
+  {  
+    buttonsPress[i] = false;
   }
 }

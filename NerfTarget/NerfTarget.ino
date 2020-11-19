@@ -1,6 +1,7 @@
 // --- variables ---
-bool buttonsPress[4];
-int buttonValue[4] = {10,5,3,1};
+
+int buttonValue[4] = {1,3,5,10};
+
 
 long colldown = 0;
 long colldowntime = 200;
@@ -8,6 +9,8 @@ long colldowntime = 200;
 void setup() {
   MatrixSetup();
   ButtonSetup();
+  NeoSetup();
+  NeoSetTarget();
   //MatrixSetLong(123);
 }
 
@@ -20,24 +23,22 @@ void loop() {
   
   if (colldown == 0)
   {
-    for(int i = 0; i < 4; i++)
+    for(int i = 3; i >=0 ; i--)
     {
-      if(buttonsPress[i])
+      if(BottonWasPresst(i))
       {
         count += buttonValue[i];
-        buttonsPress[i] = false;
         MatrixSetLong(count);
         colldown = millis();
+        NeoSetSingel(i);
         break;
       }
     }
   }
   else if(millis() - colldown >= colldowntime)
   {
-    for(int i = 0; i < 2; i++)
-    {
-      buttonsPress[i] = 0;
-    }
+    BottonClearAll();
+    NeoSetTarget();
     colldown = 0;
   }
 }
